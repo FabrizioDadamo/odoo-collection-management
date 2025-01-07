@@ -7,7 +7,7 @@
 
     <record id="group_collection_manager" model="res.groups">
         <field name="name">Collection Manager</field>
-        <field name="implied_ids" eval="[(4, ref('group_collection_user'))]"/>
+        <field name="implied_ids" eval="[(4, ref('collection_management.group_collection_user'))]"/>
         <field name="category_id" ref="base.module_category_operations"/>
     </record>
 </odoo>
