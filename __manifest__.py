@@ -20,20 +20,13 @@ Modulo stand-alone per Odoo 16 che consente:
         # 'calendar',
     ],
     'data': [
-        # modelli e azioni
-    'views/collection_point_views.xml',
-    'views/material_type_views.xml',
-    'views/collection_movement_views.xml',
-
-    # menu
-    'views/menus.xml',
-
-    # security
-    'security/security.xml',
-    'security/ir.model.access.csv',
-
-    # cron
-    'data/reminder_cron.xml',
+        'security/security.xml',                
+        'security/ir.model.access.csv',         
+        'views/collection_point_views.xml',
+        'views/material_type_views.xml',
+        'views/collection_movement_views.xml',
+        'views/menus.xml',
+        'data/reminder_cron.xml',
     ],
     'assets': {
         'web.assets_backend': [
