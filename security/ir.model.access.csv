@@ -1,7 +1,9 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 collection_point_user,collection_point_user,model_collection_point,base.group_user,1,1,1,1
 collection_point_manager,collection_point_manager,model_collection_point,collection_management.group_collection_manager,1,1,1,1
+
 material_type_user,material_type_user,model_material_type,base.group_user,1,1,1,1
 material_type_manager,material_type_manager,model_material_type,collection_management.group_collection_manager,1,1,1,1
+
 collection_movement_user,collection_movement_user,model_collection_movement,base.group_user,1,1,1,1
 collection_movement_manager,collection_movement_manager,model_collection_movement,collection_management.group_collection_manager,1,1,1,1
