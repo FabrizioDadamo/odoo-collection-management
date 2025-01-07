@@ -1,0 +1,80 @@
+<!-- collection_management/views/collection_point_views.xml -->
+<odoo>
+    <!-- Action per i Punti di Raccolta -->
+    <record id="action_collection_point_tree" model="ir.actions.act_window">
+        <field name="name">Punti di Raccolta</field>
+        <field name="res_model">collection.point</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <!-- Vista Tree -->
+    <record id="view_collection_point_tree" model="ir.ui.view">
+        <field name="name">collection.point.tree</field>
+        <field name="model">collection.point</field>
+        <field name="arch" type="xml">
+            <tree decoration-danger="occupied_capacity &gt;= capacity">
+                <field name="name"/>
+                <field name="location"/>
+                <field name="capacity"/>
+                <field name="occupied_capacity"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista Form -->
+    <record id="view_collection_point_form" model="ir.ui.view">
+        <field name="name">collection.point.form</field>
+        <field name="model">collection.point</field>
+        <field name="arch" type="xml">
+            <form string="Punto di Raccolta" class="oe_form_custom">
+                <sheet>
+                    <h2>
+                        <field name="name" class="oe_inline"/>
+                    </h2>
+                    <group>
+                        <field name="location"/>
+                        <field name="capacity"/>
+                        <field name="occupied_capacity" readonly="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Movimenti">
+                            <field name="movement_ids">
+                                <tree editable="bottom">
+                                    <field name="material_type_id"/>
+                                    <field name="quantity"/>
+                                    <field name="date"/>
+                                    <field name="status"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista Kanban -->
+    <record id="view_collection_point_kanban" model="ir.ui.view">
+        <field name="name">collection.point.kanban</field>
+        <field name="model">collection.point</field>
+        <field name="arch" type="xml">
+            <kanban class="collection-kanban">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click o_kanban_record {{ 'bg-danger' if record.occupied_capacity.value >= record.capacity.value else 'bg-success' }}">
+                            <div class="kanban_title">
+                                <strong><field name="name"/></strong>
+                            </div>
+                            <div>
+                                <span>Ubicazione: <field name="location"/></span>
+                            </div>
+                            <div>
+                                <span>Capacità: <field name="capacity"/> / <field name="occupied_capacity"/></span>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+</odoo>

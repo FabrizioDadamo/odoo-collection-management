@@ -1,0 +1,50 @@
+﻿<!-- collection_management/views/menus.xml -->
+<odoo>
+    <!-- Action 1: Punti di Raccolta -->
+    <record id="action_collection_point_tree" model="ir.actions.act_window">
+        <field name="name">Punti di Raccolta</field>
+        <field name="res_model">collection.point</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <!-- Action 2: Tipi di Materiale -->
+    <record id="action_material_type_tree" model="ir.actions.act_window">
+        <field name="name">Tipi di Materiale</field>
+        <field name="res_model">material.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Action 3: Movimenti -->
+    <record id="action_collection_movement_tree" model="ir.actions.act_window">
+        <field name="name">Movimenti</field>
+        <field name="res_model">collection.movement</field>
+        <field name="view_mode">tree,form,calendar</field>
+    </record>
+
+    <!-- Menu principale con web_icon (nessun parent -> top-level menu) -->
+    <menuitem id="collection_management_main_menu"
+              name="Gestione Raccolta"
+              web_icon="fa fa-recycle"
+              sequence="10"/>
+
+    <!-- Menu Punti di Raccolta -->
+    <menuitem id="menu_collection_points"
+              name="Punti di Raccolta"
+              parent="collection_management_main_menu"
+              sequence="20"
+              action="action_collection_point_tree"/>
+
+    <!-- Menu Tipi di Materiale -->
+    <menuitem id="menu_material_types"
+              name="Tipi di Materiale"
+              parent="collection_management_main_menu"
+              sequence="30"
+              action="action_material_type_tree"/>
+
+    <!-- Menu Movimenti -->
+    <menuitem id="menu_collection_movements"
+              name="Movimenti"
+              parent="collection_management_main_menu"
+              sequence="40"
+              action="action_collection_movement_tree"/>
+</odoo>

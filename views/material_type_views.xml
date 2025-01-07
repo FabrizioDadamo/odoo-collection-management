@@ -1,0 +1,35 @@
+<!-- collection_management/views/material_type_views.xml -->
+<odoo>
+    <record id="action_material_type_tree" model="ir.actions.act_window">
+        <field name="name">Tipi di Materiale</field>
+        <field name="res_model">material.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Vista Tree -->
+    <record id="view_material_type_tree" model="ir.ui.view">
+        <field name="name">material.type.tree</field>
+        <field name="model">material.type</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista Form -->
+    <record id="view_material_type_form" model="ir.ui.view">
+        <field name="name">material.type.form</field>
+        <field name="model">material.type</field>
+        <field name="arch" type="xml">
+            <form string="Tipo di Materiale">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

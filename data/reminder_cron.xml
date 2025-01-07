@@ -1,0 +1,14 @@
+<!-- collection_management/data/reminder_cron.xml -->
+<odoo>
+    <record id="ir_cron_collection_movement_deadline_reminder" model="ir.cron">
+        <field name="name">Promemoria Scadenze Smaltimento</field>
+        <field name="model_id" ref="model_collection_movement"/>
+        <field name="state">code</field>
+        <field name="code">model.cron_send_reminder_for_deadlines()</field>
+        <field name="active">True</field>
+        <field name="interval_type">days</field>
+        <field name="interval_number">1</field>
+        <field name="numbercall">-1</field>
+        <field name="nextcall">2025-01-01 07:00:00</field>
+    </record>
+</odoo>

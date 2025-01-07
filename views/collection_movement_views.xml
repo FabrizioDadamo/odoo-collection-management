@@ -1,0 +1,72 @@
+<!-- collection_management/views/collection_movement_views.xml -->
+<odoo>
+    <record id="action_collection_movement_tree" model="ir.actions.act_window">
+        <field name="name">Movimenti</field>
+        <field name="res_model">collection.movement</field>
+        <!-- Vista calendar inclusa -->
+        <field name="view_mode">tree,form,calendar</field>
+    </record>
+
+    <!-- Vista Tree -->
+    <record id="view_collection_movement_tree" model="ir.ui.view">
+        <field name="name">collection.movement.tree</field>
+        <field name="model">collection.movement</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="material_type_id"/>
+                <field name="collection_point_id"/>
+                <field name="quantity"/>
+                <field name="date"/>
+                <field name="status"/>
+                <field name="deadline_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista Form -->
+    <record id="view_collection_movement_form" model="ir.ui.view">
+        <field name="name">collection.movement.form</field>
+        <field name="model">collection.movement</field>
+        <field name="arch" type="xml">
+            <form string="Movimento di Materiale">
+                <sheet>
+                    <group>
+                        <field name="material_type_id"/>
+                        <field name="collection_point_id"/>
+                        <field name="quantity"/>
+                        <field name="date"/>
+                        <field name="status"/>
+                        <field name="deadline_date"/>
+                    </group>
+                    <group>
+                        <button name="action_mark_attesa" type="object"
+                                string="In attesa"
+                                attrs="{'invisible': [('status','=', 'in_attesa')]}"/>
+                        <button name="action_mark_smaltito" type="object"
+                                string="Smaltito"
+                                attrs="{'invisible': [('status','=', 'smaltito')]}"
+                                class="btn-primary"/>
+                        <button name="action_mark_consegnato" type="object"
+                                string="Consegnato a terzi"
+                                attrs="{'invisible': [('status','=', 'consegnato')]}"
+                                class="btn-success"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista Calendar -->
+    <record id="view_collection_movement_calendar" model="ir.ui.view">
+        <field name="name">collection.movement.calendar</field>
+        <field name="model">collection.movement</field>
+        <field name="arch" type="xml">
+            <calendar date_start="date" string="Movimenti">
+                <field name="material_type_id"/>
+                <field name="collection_point_id"/>
+                <field name="status"/>
+                <field name="deadline_date"/>
+            </calendar>
+        </field>
+    </record>
+</odoo>
